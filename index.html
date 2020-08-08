@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link rel="stylesheet" href="index.css">    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="calculator">  
+    <div class="main">
+      <div class="calcBody">
+      <div class="header">
+      <div class="anchor">
+        <h2>Калькулятор</h2>      
+      </div>    
+      <div class="windowsButtons">
+        <button class = "windowsButton" id="collapse">
+          <img src="src/collapse.png" alt="bars">
+        </button>
+        <button class = "windowsButton" id="maximize">
+          <img src="src/maximize.png" alt="bars">
+        </button>
+        <button class = "windowsButton" id="close">
+          <img src="src/close.png" alt="bars">
+        </button>
+      </div>
+    </div>    
+    <div class="nav">
+      <button class="navButton" id="menu">
+        <img src="src/bars.png" alt="bars">
+      </button>
+      <h1>Обычный</h1>
+      <button class="navButton disableButton" id="logButton">
+        <img src="src/history.png" alt="bars">
+      </button>
+    </div>
+    <div class="display">
+      <div class="additionalLine"><p></p></div> 
+      <div class="mainLine"><span>0</span></div>
+      <div class='select'>
+    <button class='selectButton'></button>
+    <div class='selectDrop'>
+     <button class='selectDropButton' value='0.000001'>нанометров</button>
+     <button class='selectDropButton' value='0.001'>милиметров</button>
+     <button class='selectDropButton' value='0.1'>сантиметров</button>
+     <button class='selectDropButton selectedOption' value='1'>метров</button>
+     <button class='selectDropButton' value='1000'>километров</button>
+    </div>
+  </div>
+      <div class="secondLine"><span>0</span></div>
+      <div class='select'>
+    <button class='selectButton'></button>
+    <div class='selectDrop'>
+     <button class='selectDropButton' value='0.000001'>микрометров</button>
+     <button class='selectDropButton' value='0.001'>миллиметров</button>
+     <button class='selectDropButton' value='0.1'>сантиметров</button>
+     <button class='selectDropButton selectedOption' value='1'>метров</button>
+     <button class='selectDropButton' value='1000'>километров</button>
+    </div>
+  </div>
+    </div>
+    <div class="additionalButtons">
+      <button class="additionalButton disableButton memoryClearButton">MC</button>
+      <button class="additionalButton  disableButton" id="memoryReadButton">MR</button>
+      <button class="additionalButton memoryAddButton">M+</button>
+      <button class="additionalButton memorySubButton">M-</button>
+      <button class="additionalButton" id="memorySaveButton">MS</button>
+      <button class="additionalButton disableButton" id="memoryButton">M></button>
+      </div>
+    <div class="keyboard">    
+      <button class="keyboardButton action" id="percent" value ="/100*">%</button>
+      <button class="keyboardButton" id="sqrt">√</button>
+      <button class="keyboardButton" id="square">x²</button>
+      <button class="keyboardButton" id="oneDivide">1/x</button>
+      <button class="keyboardButton system" id="clear"     value="CE">CE</button>
+      <button class="keyboardButton system" id="clearAll"  value="C">C</button>
+      <button class="keyboardButton system" id="clearLast" value="<"><</button>
+      <button class="keyboardButton action" id="divide"    value="/">÷</button>
+      <button class="keyboardButton number" id="seven"     value="7">7</button>
+      <button class="keyboardButton number" id="eight"     value="8">8</button>
+      <button class="keyboardButton number" id="nine"      value="9">9</button>
+      <button class="keyboardButton action" id="multiply"  value="*">×</button>
+      <button class="keyboardButton number" id="four"      value="4">4</button>
+      <button class="keyboardButton number" id="five"      value="5">5</button>
+      <button class="keyboardButton number" id="six"       value="6">6</button>
+      <button class="keyboardButton action" id="subtract"  value="-">-</button>   
+      <button class="keyboardButton number" id="one"       value="1">1</button>
+      <button class="keyboardButton number" id="two"       value="2">2</button>
+      <button class="keyboardButton number" id="three"     value="3">3</button>
+      <button class="keyboardButton action" id="add"       value="+">+</button>
+      <button class="keyboardButton" id="negate"    value="*(-1)">±</button>     
+      <button class="keyboardButton number" id="zero"      value="0">0</button>
+      <button class="keyboardButton" id="decimal"   value=".">.</button> 
+      <button class="keyboardButton system" id="equals"    value="*1">=</button>
+    </div>
+      <div class="anchorTop anchorSize"></div>    
+      <div class="anchorBottom anchorSize"></div>
+      <div class="anchorLeft anchorSize"></div>
+      <div class="anchorRight anchorSize"></div>
+      <div class="anchorTopLeft anchorSize anchorCorner"></div>
+      <div class="anchorTopRight anchorSize anchorCorner"></div>
+      <div class="anchorBottomRight anchorSize anchorCorner"></div>
+      <div class="anchorBottomLeft anchorSize anchorCorner"></div>
+      </div>
+    <div class="side">
+      <button id = 'newButtonLog' class='activeNewButton'>Журнал</button>
+      <button id = 'newButtonMemory'>Память</button>
+    <div class="sideMenu" id="log">
+      <div class="sideMenuHeader" id="logHeader"></div>
+        <div class="sideMenuList">
+          <div class="sideMenuListMain" id="logList"></div>
+          <div class="sideMenuFooter" id ="logFooter">
+          <button class="navButton sideMenuClearButton" id="logClearButton">
+            <img src="src/trash.png" alt="bars">
+          </button>
+        </div>
+      </div>    
+    </div>  
+    <div  class="sideMenu" id="memory">
+      <div class="sideMenuHeader" id="memoryHeader"></div>
+      <div  class="sideMenuList">
+        <div class="sideMenuListMain" id="memoryList"></div>
+        <div class="sideMenuFooter" id="memoryFooter">
+          <button class="navButton sideMenuClearButton memoryClearButton" >
+            <img src="src/trash.png" alt="bars">
+          </button>
+          
+        </div>
+      </div>
+    </div> 
+      </div> 
+        <div class="left">
+      <div class="leftMenu">
+        <div class="leftMenuHeader">
+          <button class="navButton" id="menu2">
+            <img src="src/bars.png" alt="bars">
+         </button>
+         <h2>Калькулятор</h2>
+        </div>
+        <div class="leftMenuMain">
+          <div class="typesOfCalc activeCalc" id="obichniy">
+            <h3>Обычный</h3>
+          </div>
+           <div id="preobrazovatel">
+            <h3>Преобразователь</h3>
+          </div>
+           <div class="typesOfCalc" id="dlina">
+            <h3>Длина</h3>
+          </div>
+        </div>
+        <div class="leftMenuFooter">
+          <img src="src/info.png" alt="ifo">
+          <h2>О программе</h2>
+        </div>
+      </div>
+          <div class="leftClosingArea">
+            
+          </div>
+      </div>
+      </div>
+  </div>
+  <script src ="js/app.js"></script>
+</body>
+</html>

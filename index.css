@@ -1,0 +1,520 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: Segoe UI;
+    font-weight: 400;
+    --calcHeight: 500px;
+    --calcWidth: 320px;
+  }
+  .main{
+    position: relative;
+    height: 100%;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+  }
+  .calcBody{
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  /*.anchorSize{
+    height: 0;
+    width: 0;
+    display: block;
+  }*/
+  .anchorTop{
+    width: calc(100%);
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: ns-resize;
+    min-height: 10px;
+    position: absolute;
+    left: 0px;
+    top: -11px;
+  }
+  .anchorBottom{
+    width: calc(100% - 20px);
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: ns-resize;
+    min-height: 10px;
+    position: absolute;
+    left:10px;
+    bottom: -10px;
+  }
+  .anchorLeft{
+    width: 10px;
+    height: calc(100% - 10px);
+    background-color: rgba(0, 0, 0, 0);
+    cursor: ew-resize;
+    min-height: 10px;
+    position: absolute;
+    left: -10px;
+    top: 10px;
+  }
+  .anchorRight{
+    width: 10px;
+    height: calc(100% - 10px);
+    background-color: rgba(0, 0, 0, 0);
+    cursor: ew-resize;
+    min-height: 10px;
+    position: absolute;
+    right: -10px;
+    top: 10px;
+  }
+  .anchorTopLeft{
+    width: 10px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: nwse-resize;
+    position: absolute;
+    left: -10px;
+    top: -40px;
+  }
+  .anchorTopRight{
+    width: 10px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: nesw-resize;
+    position: absolute;  
+    right: -10px;
+    top: -10px;
+  }
+  .anchorBottomLeft{
+    width: 20px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: nesw-resize;
+    position: absolute;
+    left: -10px;
+    bottom: -10px;
+  }
+  .anchorBottomRight{
+    width: 20px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: nwse-resize;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+  }
+  button{
+    outline: none;
+  }
+  .calculator{
+    min-width: var(--calcWidth);
+    min-height: var(--calcHeight);
+    background-color: #ebebeb;
+    display:flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: stretch;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    /*transform: translate(-150px, -250px);*/
+    border: 1px solid #1883d7;
+    box-shadow:0px 0px 16px 0px rgba(0,0,0,0.3);
+  }
+  .header{
+    height: 31px;
+    margin-bottom: 3px;
+  }
+  .anchor{
+    display: inline-block;
+    height: 100%;
+    width: calc(100% - 138px);
+    cursor: move;
+  }
+  h2{
+    display: inline-block;
+    font-size: 12px;
+    padding-left: 13px;
+    padding-top: 7px;
+  }
+  .windowsButtons{
+    display: inline-block;
+    float: right;
+    height: 100%;
+  }
+  .windowsButton{
+    height: 100%;
+    width: 46px;
+    border: none;
+    margin-right: -5px;
+    background-color: rgba(0,0,0,0);
+  }
+  .windowsButton:hover{
+    background-color: #d0d0d0;
+  }
+  .windowsButton:last-child:hover{
+    background-color: #e81123;  
+  }
+  .windowsButton:last-child:hover img{
+    filter: brightness(0) invert(1);
+  }
+  .windowsButton:last-child{
+    margin-right: -1px;
+  }
+  .nav{
+    height: 44px;
+    margin-bottom: 2px;
+  }
+  h1 {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 400;
+    vertical-align: middle;
+    padding-left: 8px;
+  }
+  .navButton{
+    width: 44px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;  
+  }
+  #menu{
+    background-color: rgba(0,0,0,0);
+    /*background-color: #d9d9d9;*/
+    /*border: 2px solid #eaeaea;*/
+  }
+  #menu:hover{
+    background-color: #e0e0e0;
+  }
+  .additionalLine{
+    text-align: right;
+    font-size: 16px;
+    color: #5c5c5c;
+    padding-bottom: 4px;
+    height: 16px;
+  }
+  .additionalLine p{
+    padding-right: 23px;
+  }
+  .mainLine{
+    height: 50px;
+    text-align: right;
+    font-size: 50px;
+    padding-bottom: 24px;  
+  }
+  .mainLine span{
+    font-weight: 600;
+    padding-right: 12px;
+    white-space: nowrap;
+  }
+  .secondLine{
+    height: 43px;
+    padding-bottom: 10px;
+    display: none;  
+  }
+  .secondLine span{
+    font-size: 32px;
+    float: left;
+  }
+  .additionalButtons{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(44px, 1fr));
+    grid-template-rows: minmax(28px, 1fr);
+    grid-gap: 4px;
+    justify-items: center;
+    align-items: center;
+    margin: 0 4px;
+    flex-grow: 1;
+  }
+  .display{
+    padding-left: 13px;
+  }
+  .display button{
+    border: none;
+    background-color: rgba(0,0,0,0);
+    display: none;
+  }
+  /*.display button:hover{
+    opacity: 0.5;
+  }*/
+  .additionalButton{
+    width: 100%;
+    height: 100%;  
+    background-color: rgba(0,0,0,0);
+    border: none;
+    border: 2px solid #eee;
+    font-weight: 600;  
+  }
+  .additionalButton:hover{
+    background-color: #c0c0c1;
+  }
+  .additionalButton.disableButton{
+    opacity: 0.2;
+  }
+  .additionalButton.disableButton:hover{
+    background-color: rgba(0,0,0,0);
+  }
+  .keyboard{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(75px, 1fr));
+    grid-template-rows: repeat(6, minmax(45px, 1fr));
+    grid-gap: 4px;
+    justify-items: center;
+    align-items: center;
+    margin: 4px;  
+    /*display: none;*/
+    flex-grow: 10;
+  }
+  .keyboardButton {
+    min-width: 100%;
+    min-height: 100%;
+    border: none;
+    background-color: #f4f4f4;
+    /*font-size: 16px;  */
+    font-size: 32px;
+    font-weight: 100;
+  }
+  .keyboardButton:hover{
+    background-color: #e0e0e0;
+  }
+  #multiply:hover, #subtract:hover, #add:hover, #equals:hover, #divide:hover{
+    background-color: #55a5e4;
+    color: #fff;
+  }
+  .number{
+    font-size: 24px;
+    font-weight: 600;
+    background-color: #fbfbfb;
+  }
+  #square, #oneDivide, #clearAll, #clear{
+    font-size: 16px;
+  }
+  #percent, #sqrt{
+    font-size: 20px;
+  }
+  .topPanel{
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    cursor: ns-resize;
+  }
+  #logButton{
+    background-color: rgba(0,0,0,0);
+    /*background-color: #d0d0d0;
+    border: 2px solid #dadada;*/
+    float: right;
+  }
+  #logButton:hover{
+    background-color: #d0d0d0;
+  }
+  #logButton.disableButton img{
+    opacity:0.2;
+  }
+  #logButton.disableButton:hover{
+    background-color: rgba(0,0,0,0);
+  }
+  .sideMenuClearButton{
+    height: 44px;
+    float: right;
+    background-color: rgba(0,0,0,0);
+  }
+  .sideMenuClearButton:hover{
+    background-color: #d0d0d0;
+  }
+  .sideMenuList{
+    height: 253px;  
+    text-align: right;  
+    background-color: #ebebeb;
+  }
+  .sideMenuListMain>div:hover{
+    background-color: #d0d0d0;
+  }
+  .sideMenuList div p{
+    margin-right: 10px;
+  }
+  .sideMenuList div p:first-child{
+    color: #49494a;
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
+  .sideMenuList div p:last-child{
+    color: #000;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 33px;
+  }
+  .sideMenu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0px;
+    /*width: var(--calcWidth);
+    height: var(--calcHeight);*/
+  }
+  .sideMenuHeader{  
+   /* height: calc((var(--calcHeight))*0.35);*/
+  }
+  .side{
+    display: flex;
+  }
+  .side>button{
+    display: none;
+    position: absolute;
+    width: 90px;
+    height: 26px;
+    border: none;
+    right: 150px;
+    top: 31px;
+    background-color: rgba(0,0,0,0);
+  }
+  .side>button:nth-child(2){
+    right: 60px;
+  }
+  .side>button:hover{
+    opacity: 0.5;
+  }
+  .side>button.activeNewButton{
+    border-bottom: 2px blue solid;
+  }
+  .sideMenuList{  
+  /*  height: calc((var(--calcHeight))*0.58);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 10;
+  }
+  .sideMenuFooter{
+    position: relative;
+    bottom: 0;
+    height: 44px;
+  }
+  .sideMenuListMain{
+    overflow-y: scroll;
+  }
+  #memoryList p{
+    font-size: 24px;
+    color: #000;
+    font-weight: 500;
+    padding-top: 12px;
+    margin-bottom: 5px;
+  }
+  .sideMenuListMain>div{
+    margin-top: 13px;
+    margin-bottom: 3px;
+  }
+  .sideMenuListMain>div>button{
+    width: 44px;
+    height: 36px;
+    margin-right: 26px;  
+    border: 2px solid #eee;
+  }
+  .left{
+    height: calc(var(--calcHeight) - 31px);
+    width: var(--calcWidth);
+    display: flex;
+    flex-direction: row;  
+    position: absolute;
+    top: 31px;
+  }
+  .leftClosingArea{
+  }
+  .leftMenu{
+    width: 256px;
+    height: 100%; 
+    background-color: #efefef;  
+    display: flex;
+    flex-direction: column;
+  }
+  .leftMenuHeader{
+    height: 44px;  
+  }
+  .leftMenuHeader h2{
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: 0;
+  }
+  .leftMenuHeader button{
+    background-color: #efefef;
+  }
+  .leftMenuHeader button:hover{
+    background-color: #d0d0d0;
+  }
+  .leftMenuFooter{
+    height: 47px;
+    border-top: 1px #d0d0d0 solid;  
+  }
+  .leftMenuFooter img{
+    margin-left: 14px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    vertical-align: middle;
+  }
+  .leftMenuFooter h2{
+    padding-left: 27px;
+    padding-top: 0;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  .leftMenuMain{
+  flex-grow: 10;}
+  .typesOfCalc{
+    height: 48px;
+  }
+  .typesOfCalc h3{
+    padding: 12px 0px 0px 60px;
+    font-size: 16px;
+  }
+  .activeCalc{
+    background-color: #a6d8ff;
+  }
+  .typesOfCalc:hover{
+    background-color: #d0d0d0;
+  }
+  .typesOfCalc.activeCalc:hover{
+    background-color: #a6d8ff;
+  }
+  #preobrazovatel{
+    height: 48px;
+    padding: 12px 0px 0px 49px;
+  }
+  #preobrazovatel h3{
+    font-weight: 500;
+    font-size: 18px;
+  }
+  /***************************************************************/
+  .select{
+    position: relative;
+    display: none;
+  }
+  .select button{
+    border: none;
+    outline: none;  
+    background-color: #ebebeb;
+    display: block;
+  }
+  .selectDropButton{
+    width: 100px;
+  }
+  .selectDropButton:hover{
+    background-color: #cacaca;
+  }
+  .select button.selectedOption{
+    background-color: #86b6dc;
+  }
+  .select button.selectedOption:hover{
+    background-color: #5aa2db;
+  }
+  .selectButton{
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .selectButton:hover{
+    opacity:0.8;
+  }
+  .selectDrop{
+    display: none;
+    background-color: rgba(0,0,0,0);
+    position: absolute;
+    top: 0;
+    border: 1px solid #ccc;  
+  }
+  /***************************************************************/
